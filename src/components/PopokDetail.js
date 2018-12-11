@@ -20,13 +20,14 @@ class PopokDetail extends Component {
             })
     }
     onBtnCartClick = () => {
+        var id = ('http://localhost:1997/cart'.length);
         var nama = this.props.popok.nama;
         var img = this.refs.imgCart;
         var harga = this.props.popok.harga;
         var qty = this.refs.quantityCart.value;
         var totalHarga = harga * qty;
 
-        axios.post('http://localhost:1997/cart', {
+        axios.post('http://localhost:1997/cart'+id, {
             nama,
             harga,
             img,
