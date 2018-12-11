@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import queryString from 'query-string';
-import { select_popok, onCartAdd} from '../actions';
+import { select_popok} from '../actions';
 import { Button} from 'reactstrap';
-import { Redirect } from 'react-router-dom';
 
 class PopokDetail extends Component {
     componentDidMount() {
@@ -21,13 +20,21 @@ class PopokDetail extends Component {
             })
     }
     onBtnCartClick = () => {
-        var nama = this.refs.namaCart;
+        var nama = this.props.popok.nama;
         var img = this.refs.imgCart;
-        var harga = this.refs.hargaCart;
-        var quantity = this.refs.quantityCart;
-        var totalHarga = harga*quantity;
+        var harga = this.props.popok.harga;
+        var qty = this.refs.quantityCart.value;
+        var totalHarga = harga * qty;
 
-        this.props.onCartAdd({nama, img, harga, quantity, totalHarga})
+        axios.post('http://localhost:1997/cart', {
+            nama,
+            harga,
+            img,
+            qty,
+            totalHarga
+        }).catch((err) => {
+            console.log(err)
+        })
     }
 
     renderButton = () => {
@@ -39,6 +46,7 @@ class PopokDetail extends Component {
                     Add To Cart
                 </Button>
     }
+
      render() {
         var { nama, harga, img, description, merk } = this.props.popok;
         return(
@@ -49,7 +57,7 @@ class PopokDetail extends Component {
                     </div>
                     <div className="col-8">
                         <div className="row">
-                            <h1 ref="namaCart">{nama}</h1>
+                            <h1>{nama}</h1>
                         </div>
                         <div className="row">
                             <h3>{merk}</h3>
@@ -61,7 +69,7 @@ class PopokDetail extends Component {
                             <p>{description}</p>
                         </div>
                         <div>
-                        <input ref="quantityCart" type="number" name="quantity" id="quantity" placeholder="Mau Beli Berapa" required />
+                        <input type="number" ref="quantityCart" name="quantity" id="quantity" placeholder="Mau Beli Berapa" required="Beli Berapa"/>
                         </div>
                         <div>
                             {this.renderButton()}
@@ -77,4 +85,4 @@ const mapStateToProps = (state) => {
     return { popok: state.selectedPopok }
 }
 
-export default connect(mapStateToProps, { select_popok , onCartAdd})(PopokDetail);
+export default connect(mapStateToProps, { select_popok})(PopokDetail);

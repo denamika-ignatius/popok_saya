@@ -43,18 +43,6 @@ export const onUserRegister = ({ username, email, phone, password }) => {
     }
 }
 
-export const onCartAdd = ({nama, img, harga, quantity, totalHarga}) =>{
-    return(dispatch) =>{
-        dispatch({type: AUTH_LOADING})
-        axios.get('http://localhost:1997/cart',{
-        }).then((res) =>{
-            axios.post('http://localhost:1997/cart',{
-            nama, img, harga, quantity, totalHarga
-        })
-        })       
-    }
-}
-
 export const onUserLogout = () => {
     return { type: LOGOUT }
 }
