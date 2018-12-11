@@ -27,7 +27,8 @@ class PopokDetail extends Component {
         var qty = this.refs.quantityCart.value;
         var totalHarga = harga * qty;
 
-        axios.post('http://localhost:1997/cart'+id, {
+        axios.post('http://localhost:1997/cart', {
+            id,
             nama,
             harga,
             img,
