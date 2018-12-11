@@ -82,7 +82,10 @@ class HeaderBertasbih extends Component {
                                     <Link to="/managepopok">Manage Popok</Link>
                                 </DropdownItem>
                                 <DropdownItem>
-                                    Option 2
+                                    <Link to ="/cart">Cart</Link>
+                                </DropdownItem>
+                                <DropdownItem>
+                                    <Link to ="/history">History</Link>
                                 </DropdownItem>
                                 <DropdownItem divider />
                                 <DropdownItem onClick={this.onLogOutSelect}>

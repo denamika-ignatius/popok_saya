@@ -18,7 +18,7 @@ class PopokItemBertasbih extends Component {
                             <i className="fas fa-plus fa-3x" />
                         </div>
                     </div>
-                    <img className="img-fluid" src={img} alt="ferguso" />
+                    <img className="img-fluid" src={img} alt="ferguso" width="100%"/>
                 </div>
                 <div className="portfolio-caption">
                     <h4>{nama}</h4>

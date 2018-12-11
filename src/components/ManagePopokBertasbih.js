@@ -69,7 +69,7 @@ class ManagePopokBertasbih extends Component {
                         <td>{nama}</td>
                         <td>{merk}</td>
                         <td>Rp. {harga}</td>
-                        <td><img src={img} width="50px" alt={id} /></td>
+                        <td><img src={img} width="150px" height="150px" alt={id} /></td>
                         <td>{description}</td>
                         <td><input className="btn btn-primary" type="button" value="Edit" onClick={() => this.setState({ selectedIdEdit: id })} /></td>
                         <td><input className="btn btn-danger" type="button" value="Delete" onClick={() => this.onBtnDeleteClick(id)} /></td>
